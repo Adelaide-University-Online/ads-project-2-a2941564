@@ -8,13 +8,27 @@
 * This is my own work as defined by
 *    the University's Academic Integrity Policy.
 **/
+
 public class Runner {
-    
     public static void main(String[] args) {
-        System.out.println("Welcome to ADS Assignment Starter!");
-        System.out.println("This is a basic Java project template.");
-        System.out.println("You can modify this file to implement your assignment requirements.");
+        // Ensure you have the test files (like XBIT.txt) in the root of your project directory 
+        String testFile = "XBIT.txt"; 
         
+        CourseGraph myGraph = new CourseGraph();
+        
+        System.out.println("Initializing OptiTime Graph from " + testFile + "...\n");
+        myGraph.buildGraphFromFile(testFile);
+        
+        DegreePlanner planner = new DegreePlanner(myGraph);
+        
+        // Scenario A: A student taking 4 courses per study period
+        System.out.println("Executing Scenario A...");
+        planner.calculateStudyPlan(4);
+
+        System.out.println("\n==================================================\n");
+
+        // Scenario B: A student taking 2 courses per study period
+        System.out.println("Executing Scenario B...");
+        planner.calculateStudyPlan(2);
     }
-    
 }
